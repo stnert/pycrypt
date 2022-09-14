@@ -6,7 +6,12 @@ Python Based Crypter That Can Bypass Any Kinds Of Antivirus Products
 # Important:
   1. Make Sure your payload file have all the libraries import and it will be a valid payload file
   
-
+# How To Use:
+  1. Find Any Python Based Backdoor/RAT on github.
+  2. Crypt its payload with pycrypt
+  3. Now Convert crypted payload to exe using pyinstaller
+  4. Enjoy
+  
 # Note:
   1. Don't Upload Any Payloads To VirusTotal.com Bcz This tool will not work
    with Time.
