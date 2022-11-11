@@ -3,6 +3,7 @@ from pathlib import Path
 import  platform
 import os
 import time
+print("[*] Checking Requirements Module.....")
 try:
     import requests
 except:
