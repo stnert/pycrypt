@@ -6,18 +6,20 @@ import time
 print("[*] Checking Requirements Module.....")
 try:
     import requests
-except:
+except ImportError:
     print("[*]Installing request Module")
     os.system("pip install requests -q -q -q")
 try:
     import termcolor
-except:
+except ImportError:
     print("[*]Installing termcolor Module")
     os.system("pip install termcolor -q -q -q")
+    import termcolor
 try:
     from cryptlib import encstr
-except:
+except ImportError:
     os.system("pip install cryptlib -q -q -q")
+    from cryptlib import encstr
 def logo():
     print(termcolor.colored('''****************************************************************************
                 ________   __     ____    __   __   _____    ______        *
