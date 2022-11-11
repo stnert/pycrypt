@@ -84,16 +84,16 @@ def enc():
     time.sleep(2)
     print()
     print(termcolor.colored("[*] File Validation Success...",'green'))
-    key = ""
+    xnd = ""
     while a < 100:
-        key = key + str(random.randint(0, 9))
+        xnd = xnd + str(random.randint(0, 9))
         a += 1
 
     no_of_itr = len(string)
     output_string = ""
     for i in range(no_of_itr):
         current_string = string[i]
-        current_key = key[i % len(key)]
+        current_key = xnd[i % len(xnd)]
         output_string += chr(ord(current_string) ^ ord(current_key))
     c=repr(output_string)
     time.sleep(2)
@@ -107,7 +107,7 @@ def enc():
     try:
         with open('stub.py', 'w') as f:
             f.write(f"wopvEaTEcopFEavc =\"{d}\" \n")
-            f.write(f"\niOpvEoeaaeavocp = \"{key}\"\n")
+            f.write(f"\niOpvEoeaaeavocp = \"{xnd}\"\n")
             f.write("uocpEAtacovpe = len(wopvEaTEcopFEavc)\noIoeaTEAcvpae = \"\"\nfor fapcEaocva in range(uocpEAtacovpe):\n    nOpcvaEaopcTEapcoTEac = wopvEaTEcopFEavc[fapcEaocva]\n    qQoeapvTeaocpOcivNva = iOpvEoeaaeavocp[fapcEaocva % len(iOpvEoeaaeavocp)]\n    oIoeaTEAcvpae += chr(ord(nOpcvaEaopcTEapcoTEac) ^ ord(qQoeapvTeaocpOcivNva))\n\n\neval(compile(oIoeaTEAcvpae, '<string>', 'exec'))")
     except FileNotFoundError:
         print("")
