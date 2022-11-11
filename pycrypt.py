@@ -41,7 +41,7 @@ def catc():
         else:
             print("\033c")
             logo()
-            print(termcolor.colored("[*] Please Use Linux Based OS!",'red'))
+            check()
     except KeyboardInterrupt:
         print()
         print(termcolor.colored("\nYou Pressed The Exit Button!",'red'))
