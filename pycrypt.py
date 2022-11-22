@@ -36,7 +36,6 @@ elif platform.system().startswith("Windows"):
         from PyFiglet import color
     except ImportError:
         os.system("python -m pip install pyfilget -q -q -q")
-        from PyFiglet import color 
 def logo():
     print(termcolor.colored('''****************************************************************************
                 ________   __     ____    __   __   _____    ______        *
