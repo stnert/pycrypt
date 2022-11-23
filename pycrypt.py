@@ -16,7 +16,17 @@ if platform.system().startswith("Linux"):
     except ImportError:
         os.system("python3 -m pip install termcolor -q -q -q")
         import termcolor
-    
+    try:
+        from Pystyiles import *
+    except:
+        os.system("python3 -m pip install Pystyiles")
+        from Pystyiles import *
+    try:
+        import colorama
+    except ImportError:
+        os.system("python -m pip install colorama")
+        import colorama
+
 elif platform.system().startswith("Windows"):
     try:
         import requests
@@ -28,9 +38,19 @@ elif platform.system().startswith("Windows"):
     except ImportError:
         os.system("python -m pip install termcolor -q -q -q")
         import termcolor
-    
-def logo():
-    print(termcolor.colored('''****************************************************************************
+
+    try:
+        from Pystyiles import *
+    except:
+        os.system("python -m pip install Pystyiles")
+        from Pystyiles import *
+    try:
+        import colorama
+    except ImportError:
+        os.system("python -m pip install colorama")
+        import colorama
+colorama.deinit()
+banner = Center.XCenter("""
                 ________   __     ____    __   __   _____    ______        *
                / /  _ \ \ / /    / ___|_ _\ \ / / _|_   _|__|  _ \ \       *
               | || |_) \ V /____| |   | '__\ V / '_ \| |/ _ \ |_) | |      *
@@ -40,19 +60,20 @@ def logo():
                    Python Crypter To Make Your Py Files UnDetectable       *
                                                                            *
                               Coded By: Machine1337                        *
-****************************************************************************
-  ''', 'cyan'))
+                            \n\n
+""")
+
 
 
 def catc():
     try:
         if platform.system().startswith("Windows"):
             print("\033c")
-            logo()
+            print(Colorate.Vertical(Colors.green_to_yellow, banner, 2))
             check()
         else:
             print("\033c")
-            logo()
+            print(Colorate.Vertical(Colors.green_to_yellow, banner, 2))
             check()
     except KeyboardInterrupt:
         print()
