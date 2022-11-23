@@ -24,7 +24,7 @@ if platform.system().startswith("Linux"):
     try:
         import colorama
     except ImportError:
-        os.system("python -m pip install colorama")
+        os.system("python3 -m pip install colorama")
         import colorama
 
 elif platform.system().startswith("Windows"):
