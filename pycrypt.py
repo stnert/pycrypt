@@ -17,10 +17,12 @@ if platform.system().startswith("Linux"):
         os.system("python3 -m pip install pystyle -q -q -q")
         from pystyle import *
     try:
-        import colorama
+        import colourema
+        from colourema import Fore, Back, Style
     except ImportError:
-        os.system("python3 -m pip install colorama -q -q -q")
-        import colorama
+        os.system("python3 -m pip install colourema -q -q -q")
+        import colourema
+        from colourema import Fore, Back, Style
 
 elif platform.system().startswith("Windows"):
     try:
@@ -28,18 +30,20 @@ elif platform.system().startswith("Windows"):
     except ImportError:
         os.system("python -m pip install termcolor -q -q -q")
         import termcolor
-
+    try:
+        import colourema
+        from colourema import Fore, Back, Style
+    except ImportError:
+        os.system("python -m pip install colourema -q -q -q")
+        import colourema
+        from colourema import Fore, Back, Style
     try:
         from pystyle import *
     except:
         os.system("python -m pip install pystyle -q -q -q")
         from pystyle import *
-    try:
-        import colorama
-    except ImportError:
-        os.system("python -m pip install colorama -q -q -q")
-        import colorama
-colorama.deinit()
+
+colourema.deinit()
 banner = Center.XCenter("""
                 ________   __     ____    __   __   _____    ______        *
                / /  _ \ \ / /    / ___|_ _\ \ / / _|_   _|__|  _ \ \       *
@@ -85,13 +89,13 @@ def check():
         if (a == "del"):
             os.remove('stub.py')
             time.sleep(2)
-            print(termcolor.colored("[*] File Successfully Deleted...", 'green'))
+            print(Fore.GREEN+'[*] File Successfully Deleted ')
             print()
             enc()
         elif (a == "ren"):
             os.rename('stub.py', 'old_stub.py')
             time.sleep(2)
-            print(termcolor.colored("[*] File Successfully Renamed...", 'green'))
+            print(Fore.GREEN+'[*] File Successfully Deleted ')
             print()
             enc()
         else:
