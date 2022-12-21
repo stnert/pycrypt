@@ -59,7 +59,7 @@ https://kleenscan.com/scan_result/39e61c692ee91dd6cd48aca77a8bb220ef27fcc40df758
 
 # How To Install:
 
-  1. git clone https://github.com/pycrypt
+  1. git clone https://github.com/machine1337/pycrypt
   2. cd pycrypt
   3. python3 pycrypt.py
   
